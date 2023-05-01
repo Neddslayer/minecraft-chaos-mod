@@ -16,7 +16,10 @@ public class ChaosOrbItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {
-            user.sendMessage(Text.of("ooh mahh gawwd"));
+            user.sendMessage(Text.of("used it"));
+            user.getStackInHand(hand).damage(2, user, (player) -> {
+                player.sendMessage(Text.of("it broke"));
+            } );
         }
         return super.use(world, user, hand);
     }
