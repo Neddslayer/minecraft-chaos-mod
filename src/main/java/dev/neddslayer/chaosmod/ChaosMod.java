@@ -14,5 +14,6 @@ public class ChaosMod implements ModInitializer {
         LOGGER.info("The Chaos Orb has awaken...");
 
         ItemRegistration.registerItems();
+
     }
 }
