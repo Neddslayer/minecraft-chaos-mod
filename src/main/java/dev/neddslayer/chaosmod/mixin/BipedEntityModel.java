@@ -5,6 +5,7 @@ import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.CrossbowPosing;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,10 +33,11 @@ public abstract class BipedEntityModel<T extends LivingEntity> {
      */
     @Overwrite
     private void positionRightArm(T entity) {
-        if (entity.getStackInHand(entity.getActiveHand()).getItem() == ItemRegistration.CHAOS_ORB) {
-            this.rightArm.pitch = 299;
-            this.rightArm.yaw = 0.0F;
-            CHAOS_LOGGER.info("uhhh");
+        if (entity.getStackInHand(entity.getActiveHand()).getItem() == Items.BAT_SPAWN_EGG) {
+            this.rightArm.yaw = -0.1F + (this.head.yaw / 4);
+            this.leftArm.yaw = 0.1F + (this.head.yaw / 4);
+            this.rightArm.pitch = -1.5707964F + this.head.pitch;
+            this.leftArm.pitch = -1.5707964F + this.head.pitch;
         }
         else
         {
@@ -80,9 +82,11 @@ public abstract class BipedEntityModel<T extends LivingEntity> {
      */
     @Overwrite
     private void positionLeftArm(T entity) {
-        if (entity.getStackInHand(entity.getActiveHand()).getItem() == ItemRegistration.CHAOS_ORB) {
-            this.leftArm.pitch = 299;
-            this.leftArm.yaw = 0.0F;
+        if (entity.getStackInHand(entity.getActiveHand()).getItem() == Items.BAT_SPAWN_EGG) {
+            this.rightArm.yaw = -0.1F + (this.head.yaw / 2);
+            this.leftArm.yaw = 0.1F + (this.head.yaw / 2);
+            this.rightArm.pitch = -1.5707964F + this.head.pitch;
+            this.leftArm.pitch = -1.5707964F + this.head.pitch;
         }
         else {
             switch (this.leftArmPose) {
