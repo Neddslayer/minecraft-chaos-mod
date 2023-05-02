@@ -1,5 +1,6 @@
 package dev.neddslayer.chaosmod.mixin;
 
+import dev.neddslayer.chaosmod.ChaosMod;
 import dev.neddslayer.chaosmod.registry.ItemRegistration;
 import net.fabricmc.loader.impl.lib.sat4j.core.Vec;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -15,7 +16,10 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Arm;
 import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.random.Random;
 import org.spongepowered.asm.mixin.*;
+
+import static dev.neddslayer.chaosmod.ChaosMod.CHAOS_RANDOM;
 
 @Mixin(HeldItemFeatureRenderer.class)
 public abstract class HeldItemFeatureRendererMixin<T extends LivingEntity, M extends EntityModel<T> & ModelWithArms> extends FeatureRenderer<T, M> {
@@ -43,10 +47,11 @@ public abstract class HeldItemFeatureRendererMixin<T extends LivingEntity, M ext
             boolean bl = arm == Arm.LEFT;
             matrices.translate((double)((float)(bl ? -1 : 1) / 16.0F), 0.125, -0.625);
             if (stack.getItem() == ItemRegistration.CHAOS_ORB) {
-                //matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion((float) (Math.toDegrees(Math.sin(animTime * 100)) * 150)));
-                //matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion((float) (Math.toDegrees(Math.sin(animTime * 100)) * 150)));
-                //matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion((float) (Math.toDegrees(Math.sin(animTime * 100)) * 150)));
-                matrices.translate(0, (Math.sin(animTime * 25) / 4) + 1, -0.05);
+                matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(ChaosMod.randomFloat(-20f, 20f)));
+                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(ChaosMod.randomFloat(-20f, 20f)));
+                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(ChaosMod.randomFloat(-20f, 20f)));
+                matrices.translate(0, (Math.sin(animTime * 25) / 4) + 0.1, -0.05);
+                matrices.translate(ChaosMod.randomFloat(-0.025f, 0.025f), ChaosMod.randomFloat(-0.025f, 0.025f), ChaosMod.randomFloat(-0.025f, 0.025f));
             }
             this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light);
             matrices.pop();

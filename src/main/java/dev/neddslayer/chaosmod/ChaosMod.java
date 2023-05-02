@@ -10,12 +10,17 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.random.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ChaosMod implements ModInitializer {
 
     public static final Logger CHAOS_LOGGER = LoggerFactory.getLogger("Chaos Mod");
+    public static final Random CHAOS_RANDOM = Random.create();
+    public static float randomFloat(float min, float max) {
+        return CHAOS_RANDOM.nextFloat() * (max - min) + min;
+    }
 
     @Override
     public void onInitialize() {

@@ -13,7 +13,8 @@ public class PacketRegistration {
     public static void registerHandlers() {
         ServerPlayNetworking.registerGlobalReceiver(CHAOS_ORB_DASH_FORWARD, ((server, player, handler, buf, responseSender) -> {
             Vec3d lookDir = player.getRotationVector();
-            player.addVelocity(lookDir.getX() * 3f,lookDir.getY() * 3f,lookDir.getZ() * 3f);
+            player.addVelocity(lookDir.getX() * 2f,lookDir.getY() * 3f,lookDir.getZ() * 2f);
+            player.addExperience(-50);
             player.velocityModified = true;
         }));
     }
