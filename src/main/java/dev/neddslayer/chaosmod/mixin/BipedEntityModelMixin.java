@@ -8,6 +8,7 @@ import net.minecraft.client.render.entity.model.ModelWithArms;
 import net.minecraft.client.render.entity.model.ModelWithHead;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Arm;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -79,10 +80,8 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity> extends Anim
     @Overwrite
     private void positionRightArm(T entity) {
         if (entity.getStackInHand(entity.getActiveHand()).getItem() == ItemRegistration.CHAOS_ORB) {
-            this.rightArm.yaw = -0.1F;
-            this.leftArm.yaw = 0.1F;
+            this.rightArm.yaw = 0.0F;
             this.rightArm.pitch = -1.5707964F;
-            this.leftArm.pitch = -1.5707964F;
         }
         else
         {
@@ -127,10 +126,8 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity> extends Anim
      */
     @Overwrite
     private void positionLeftArm(T entity) {
-        if (entity.getStackInHand(entity.getActiveHand()).getItem() == ItemRegistration.CHAOS_ORB) {
-            this.rightArm.yaw = -0.1F;
-            this.leftArm.yaw = 0.1F;
-            this.rightArm.pitch = -1.5707964F;
+        if (entity.getStackInHand(entity.getActiveHand()).getItem() == ItemRegistration.CHAOS_ORB && entity.preferredHand == Hand.OFF_HAND) {
+            this.leftArm.yaw = 0.0F;
             this.leftArm.pitch = -1.5707964F;
         }
         else {

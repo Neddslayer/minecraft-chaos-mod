@@ -20,7 +20,6 @@ public abstract class MinecraftClientMixin {
 
     @Inject(method = "doAttack", at = @At("HEAD"))
     private void leftClickHook(CallbackInfoReturnable<Boolean> cir) {
-        CHAOS_LOGGER.info("got the left click");
         if (player != null) {
             ChaosOrbItem.onLeftClick(player.getMainHandStack());
         }

@@ -46,7 +46,7 @@ public abstract class HeldItemFeatureRendererMixin<T extends LivingEntity, M ext
                 //matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion((float) (Math.toDegrees(Math.sin(animTime * 100)) * 150)));
                 //matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion((float) (Math.toDegrees(Math.sin(animTime * 100)) * 150)));
                 //matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion((float) (Math.toDegrees(Math.sin(animTime * 100)) * 150)));
-                matrices.translate(0, Math.sin(animTime * 25) / 4, 0);
+                matrices.translate(0, (Math.sin(animTime * 25) / 4) + 1, -0.05);
             }
             this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light);
             matrices.pop();

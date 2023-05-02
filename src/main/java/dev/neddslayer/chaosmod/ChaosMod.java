@@ -19,7 +19,7 @@ public class ChaosMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        CHAOS_LOGGER.info("The Chaos Orb has awaken...");
+        CHAOS_LOGGER.info("The Chaos Orb has awoken...");
 
         ItemRegistration.registerItems();
         PacketRegistration.registerHandlers();

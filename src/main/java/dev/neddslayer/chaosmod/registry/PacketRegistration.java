@@ -12,7 +12,6 @@ public class PacketRegistration {
 
     public static void registerHandlers() {
         ServerPlayNetworking.registerGlobalReceiver(CHAOS_ORB_DASH_FORWARD, ((server, player, handler, buf, responseSender) -> {
-            CHAOS_LOGGER.info("recieved packet");
             Vec3d lookDir = player.getRotationVector();
             player.addVelocity(lookDir.getX() * 3f,lookDir.getY() * 3f,lookDir.getZ() * 3f);
             player.velocityModified = true;

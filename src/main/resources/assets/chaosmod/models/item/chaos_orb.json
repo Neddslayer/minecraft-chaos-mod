@@ -255,10 +255,10 @@
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"translation": [-4, 0, 0]
+			"translation": [0, 5, -2]
 		},
 		"thirdperson_lefthand": {
-			"translation": [-4, 0, 0]
+			"translation": [0, 5, -2]
 		},
 		"ground": {
 			"scale": [1.25, 1.25, 1.25]
