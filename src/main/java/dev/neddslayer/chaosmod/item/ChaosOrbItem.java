@@ -24,14 +24,14 @@ public class ChaosOrbItem extends Item {
             user.addVelocity(0, 10, 0);
             user.velocityModified = true;
             user.getItemCooldownManager().set(this, 60);
+            List<LivingEntity> entities = world.getNonSpectatingEntities(LivingEntity.class, user.getBoundingBox().expand(20));
+            for (LivingEntity entity:
+                    entities) {
+                Vec3d lookDir = entity.getRotationVector();
+                entity.addVelocity(lookDir.getX() * -5,1,lookDir.getZ() * -5);
+            }
             user.getStackInHand(hand).damage(2, user, (player) -> {
                 player.sendMessage(Text.of("it broke"));
-                List<LivingEntity> entities = world.getNonSpectatingEntities(LivingEntity.class, Box.of(user.getPos(), 20, 20, 20));
-                for (LivingEntity entity:
-                     entities) {
-                    Vec3d lookDir = entity.getRotationVector();
-                    entity.addVelocity(lookDir.getX() * -5,5,lookDir.getZ() * -5);
-                }
             } );
         }
         return super.use(world, user, hand);
