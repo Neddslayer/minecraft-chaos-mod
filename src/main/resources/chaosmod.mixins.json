@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "BipedEntityModel"
+    "BipedEntityModelMixin",
+    "HeldItemFeatureRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
