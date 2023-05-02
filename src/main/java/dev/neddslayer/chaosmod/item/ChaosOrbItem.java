@@ -1,12 +1,23 @@
 package dev.neddslayer.chaosmod.item;
 
+import dev.neddslayer.chaosmod.registry.ItemRegistration;
+import dev.neddslayer.chaosmod.registry.PacketRegistration;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.client.gui.screen.pack.ResourcePackOrganizer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -25,8 +36,8 @@ public class ChaosOrbItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {
-            user.velocityModified = true;
-            user.getItemCooldownManager().set(this, 60);
+            if (user.getPose() == EntityPose.CROAKING)
+            user.getItemCooldownManager().set(this, 10);
             List<Entity> entities = world.getOtherEntities(user, user.getBoundingBox().expand(20));
             for (Entity entity:
                     entities) {
@@ -48,5 +59,12 @@ public class ChaosOrbItem extends Item {
             } );
         }
         return super.use(world, user, hand);
+    }
+
+    public static void onLeftClick(ItemStack stack) {
+        if (stack.getItem() == ItemRegistration.CHAOS_ORB) {
+            PacketByteBuf buf = PacketByteBufs.create();
+            ClientPlayNetworking.send(PacketRegistration.CHAOS_ORB_DASH_FORWARD, buf);
+        }
     }
 }
