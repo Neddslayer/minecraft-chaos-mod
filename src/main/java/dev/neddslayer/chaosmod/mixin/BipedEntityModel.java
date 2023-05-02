@@ -33,7 +33,7 @@ public abstract class BipedEntityModel<T extends LivingEntity> {
     @Overwrite
     private void positionRightArm(T entity) {
         if (entity.getStackInHand(entity.getActiveHand()).getItem() == ItemRegistration.CHAOS_ORB) {
-            this.rightArm.pitch = -105;
+            this.rightArm.pitch = 299;
             this.rightArm.yaw = 0.0F;
             CHAOS_LOGGER.info("uhhh");
         }
@@ -81,7 +81,7 @@ public abstract class BipedEntityModel<T extends LivingEntity> {
     @Overwrite
     private void positionLeftArm(T entity) {
         if (entity.getStackInHand(entity.getActiveHand()).getItem() == ItemRegistration.CHAOS_ORB) {
-            this.leftArm.pitch = -105;
+            this.leftArm.pitch = 299;
             this.leftArm.yaw = 0.0F;
         }
         else {
