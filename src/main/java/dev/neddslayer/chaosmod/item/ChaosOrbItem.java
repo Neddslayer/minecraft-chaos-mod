@@ -36,7 +36,6 @@ public class ChaosOrbItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {
-            if (user.getPose() == EntityPose.CROAKING)
             user.getItemCooldownManager().set(this, 10);
             List<Entity> entities = world.getOtherEntities(user, user.getBoundingBox().expand(20));
             for (Entity entity:
