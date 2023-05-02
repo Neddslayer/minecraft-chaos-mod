@@ -33,7 +33,7 @@ public abstract class BipedEntityModel<T extends LivingEntity> {
      */
     @Overwrite
     private void positionRightArm(T entity) {
-        if (entity.getStackInHand(entity.getActiveHand()).getItem() == Items.BAT_SPAWN_EGG) {
+        if (entity.getStackInHand(entity.getActiveHand()).getItem() == ItemRegistration.CHAOS_ORB) {
             this.rightArm.yaw = -0.1F + (this.head.yaw / 4);
             this.leftArm.yaw = 0.1F + (this.head.yaw / 4);
             this.rightArm.pitch = -1.5707964F + this.head.pitch;
