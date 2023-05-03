@@ -11,6 +11,7 @@ import net.minecraft.client.gui.screen.pack.ResourcePackOrganizer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -52,6 +53,7 @@ public class ChaosOrbItem extends Item {
                     // Apply a force to push the entity away from the player
                     entity.addVelocity(direction.x * 4.0, 0.75, direction.z * 4.0);
 
+                    entity.damage(DamageSource.magic(entity, user), 3);
                     ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 5));
                     ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 5));
                 }
