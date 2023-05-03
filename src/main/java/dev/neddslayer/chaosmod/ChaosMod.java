@@ -27,7 +27,7 @@ public class ChaosMod implements ModInitializer {
         return CHAOS_RANDOM.nextFloat() * (max - min) + min;
     }
 
-    public static final StatusEffect CHAOS_PROTETCTION = new ChaosProtectionEffect();
+    public static final StatusEffect CHAOS_PROTECTION = new ChaosProtectionEffect();
 
     @Override
     public void onInitialize() {
@@ -35,7 +35,7 @@ public class ChaosMod implements ModInitializer {
 
         ItemRegistration.registerItems();
         SoundRegistration.registerSounds();
-        Registry.register(Registry.STATUS_EFFECT, new Identifier("chaosmod", "chaos_protection"), CHAOS_PROTETCTION);
+        Registry.register(Registry.STATUS_EFFECT, new Identifier("chaosmod", "chaos_protection"), CHAOS_PROTECTION);
         PacketRegistration.registerHandlers();
     }
 }
