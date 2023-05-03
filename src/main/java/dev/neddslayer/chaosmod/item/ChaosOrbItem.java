@@ -2,6 +2,7 @@ package dev.neddslayer.chaosmod.item;
 
 import dev.neddslayer.chaosmod.registry.ItemRegistration;
 import dev.neddslayer.chaosmod.registry.PacketRegistration;
+import dev.neddslayer.chaosmod.registry.SoundRegistration;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
@@ -18,6 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -36,6 +38,7 @@ public class ChaosOrbItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {
+            world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundRegistration.CHAOS_ORB_RELEASE_ENERGY_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f);
             user.getItemCooldownManager().set(this, 10);
             List<Entity> entities = world.getOtherEntities(user, user.getBoundingBox().expand(20));
             for (Entity entity:

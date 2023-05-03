@@ -10,6 +10,12 @@
     "sounds": [
       "chaosmod:chaos_orb_dash"
     ]
+  },
+  "chaos_orb_protect": {
+    "subtitle": "subtitles.chaosmod.chaos_orb_protect",
+    "sounds": [
+      "chaosmod:chaos_orb_protect"
+    ]
   }
 }
 
