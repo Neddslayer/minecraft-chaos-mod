@@ -44,11 +44,11 @@ public abstract class HeldItemFeatureRendererMixin<T extends LivingEntity, M ext
         if (!stack.isEmpty()) {
             matrices.push();
             animTime+= 0.5;
-            ((ModelWithArms)this.getContextModel()).setArmAngle(arm, matrices);
+            this.getContextModel().setArmAngle(arm, matrices);
             matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-90.0F));
             matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
             boolean bl = arm == Arm.LEFT;
-            matrices.translate((double)((float)(bl ? -1 : 1) / 16.0F), 0.125, -0.625);
+            matrices.translate((float)(bl ? -1 : 1) / 16.0F, 0.125, -0.625);
             if (stack.getItem() == ItemRegistration.CHAOS_ORB) matrices.translate(0, (Math.sin(animTime * 25) / 4) + 0.1, -0.05);
 
             this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light / (CHAOS_RANDOM.nextBetween(1,4)));

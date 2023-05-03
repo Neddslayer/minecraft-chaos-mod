@@ -59,23 +59,19 @@ public abstract class HeldItemRendererMixin {
                 if (handRenderType != null && handRenderType.renderMainHand) {
                     j = hand == Hand.MAIN_HAND ? f : 0.0F;
                     k = 1.0F - MathHelper.lerp(tickDelta, this.prevEquipProgressMainHand, this.equipProgressMainHand);
-                    RenderSystem.enableBlend();
-                    RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 0.5f);
                     matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(ChaosMod.randomFloat(-1f, 1f)));
                     matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(ChaosMod.randomFloat(-1f, 1f)));
                     matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(ChaosMod.randomFloat(-1f, 1f)));
-                    this.renderFirstPersonItem(player, tickDelta, g, Hand.MAIN_HAND, j, this.mainHand, k, matrices, vertexConsumers, light);
-                    RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
-                    RenderSystem.disableBlend();
+                    this.renderFirstPersonItem(player, tickDelta, g, Hand.MAIN_HAND, j, this.mainHand, k, matrices, vertexConsumers, 0);
                 }
 
                 if (handRenderType != null && handRenderType.renderOffHand) {
                     j = hand == Hand.OFF_HAND ? f : 0.0F;
                     k = 1.0F - MathHelper.lerp(tickDelta, this.prevEquipProgressOffHand, this.equipProgressOffHand);
-                    matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(ChaosMod.randomFloat(-10f, 10f)));
-                    matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(ChaosMod.randomFloat(-10f, 10f)));
-                    matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(ChaosMod.randomFloat(-10f, 10f)));
-                    this.renderFirstPersonItem(player, tickDelta, g, Hand.OFF_HAND, j, this.offHand, k, matrices, vertexConsumers, light);
+                    matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(ChaosMod.randomFloat(-1f, 1f)));
+                    matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(ChaosMod.randomFloat(-1f, 1f)));
+                    matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(ChaosMod.randomFloat(-1f, 1f)));
+                    this.renderFirstPersonItem(player, tickDelta, g, Hand.OFF_HAND, j, this.offHand, k, matrices, vertexConsumers, 0);
                 }
 
                 vertexConsumers.draw();

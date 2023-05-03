@@ -39,8 +39,8 @@ public class ChaosOrbItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {
             world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundRegistration.CHAOS_ORB_RELEASE_ENERGY_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f);
-            user.getItemCooldownManager().set(this, 10);
-            List<Entity> entities = world.getOtherEntities(user, user.getBoundingBox().expand(20));
+            user.getItemCooldownManager().set(this, 60);
+            List<Entity> entities = world.getOtherEntities(user, user.getBoundingBox().expand(10));
             for (Entity entity:
                     entities) {
                 if (entity != user && entity instanceof LivingEntity) {
@@ -50,10 +50,10 @@ public class ChaosOrbItem extends Item {
                     Vec3d direction = entityPos.subtract(playerPos).normalize();
 
                     // Apply a force to push the entity away from the player
-                    entity.addVelocity(direction.x * 2.0, 0.5, direction.z * 2.0);
+                    entity.addVelocity(direction.x * 4.0, 0.75, direction.z * 4.0);
 
-                    ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 5));
-                    ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 200, 5));
+                    ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 5));
+                    ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 5));
                 }
             }
             user.getStackInHand(hand).damage(2, user, (player) -> {
