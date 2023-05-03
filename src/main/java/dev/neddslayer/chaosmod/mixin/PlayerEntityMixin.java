@@ -31,9 +31,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         if (this.hasStatusEffect(ChaosMod.CHAOS_PROTECTION) && !world.isClient()) {
             world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundRegistration.CHAOS_ORB_PROTECT_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f);
             this.removeStatusEffect(ChaosMod.CHAOS_PROTECTION);
-            List<Entity> entities = world.getEntitiesByClass(Entity.class, getBoundingBox().expand(5), EntityPredicates.VALID_LIVING_ENTITY);
-            for (Entity entity : entities) {
-                entity.damage(DamageSource.FLY_INTO_WALL, 4);
+            List<LivingEntity> entities = world.getEntitiesByClass(LivingEntity.class, getBoundingBox().expand(5), EntityPredicates.VALID_LIVING_ENTITY);
+            for (LivingEntity entity : entities) {
+                if (entity != this) {
+                    entity.damage(DamageSource.FLY_INTO_WALL, 4);
+                    entity.takeKnockback(2, entity.getX(), entity.getZ());
+                }
             }
             cir.setReturnValue(false);
         }
