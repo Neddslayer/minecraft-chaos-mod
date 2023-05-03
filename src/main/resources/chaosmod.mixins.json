@@ -8,6 +8,7 @@
   "client": [
     "BipedEntityModelMixin",
     "HeldItemFeatureRendererMixin",
+    "HeldItemRendererMixin",
     "MinecraftClientMixin"
   ],
   "injectors": {
