@@ -1,5 +1,6 @@
 package dev.neddslayer.chaosmod.mixin;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.neddslayer.chaosmod.ChaosMod;
 import dev.neddslayer.chaosmod.registry.ItemRegistration;
@@ -50,20 +51,16 @@ public abstract class HeldItemFeatureRendererMixin<T extends LivingEntity, M ext
             matrices.translate((double)((float)(bl ? -1 : 1) / 16.0F), 0.125, -0.625);
             if (stack.getItem() == ItemRegistration.CHAOS_ORB) matrices.translate(0, (Math.sin(animTime * 25) / 4) + 0.1, -0.05);
 
-            this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light);
+            this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light / (CHAOS_RANDOM.nextBetween(1,4)));
             if (stack.getItem() == ItemRegistration.CHAOS_ORB) {
                 matrices.translate(ChaosMod.randomFloat(-0.025f, 0.025f), ChaosMod.randomFloat(0f, 0.1f), ChaosMod.randomFloat(-0.025f, 0.025f));
-                RenderSystem.enableBlend();
-                RenderSystem.defaultBlendFunc();
-                RenderSystem.setShaderColor(0.05f, 0.05f, 0.05f, 0.5f);
+
                 for (int zxc = 0; zxc < 2; zxc++) {
                     matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(ChaosMod.randomFloat(-20f, 20f)));
                     matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(ChaosMod.randomFloat(-20f, 20f)));
                     matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(ChaosMod.randomFloat(-20f, 20f)));
-                    this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light);
+                    this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, 0);
                 }
-                RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
-                RenderSystem.disableBlend();
             }
 
             matrices.pop();

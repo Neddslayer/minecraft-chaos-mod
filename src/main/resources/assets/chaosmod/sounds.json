@@ -1,0 +1,15 @@
+{
+  "chaos_orb_release_energy": {
+    "subtitle": "subtitles.chaosmod.chaos_orb_release_energy",
+    "sounds": [
+      "chaosmod:chaos_orb_impact"
+    ]
+  },
+  "chaos_orb_dash": {
+    "subtitle": "subtitles.chaosmod.chaos_orb_dash",
+    "sounds": [
+      "chaosmod:chaos_orb_dash"
+    ]
+  }
+}
+

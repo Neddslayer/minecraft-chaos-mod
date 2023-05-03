@@ -2,6 +2,7 @@ package dev.neddslayer.chaosmod;
 
 import dev.neddslayer.chaosmod.registry.ItemRegistration;
 import dev.neddslayer.chaosmod.registry.PacketRegistration;
+import dev.neddslayer.chaosmod.registry.SoundRegistration;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
@@ -27,6 +28,7 @@ public class ChaosMod implements ModInitializer {
         CHAOS_LOGGER.info("The Chaos Orb has awoken...");
 
         ItemRegistration.registerItems();
+        SoundRegistration.registerSounds();
         PacketRegistration.registerHandlers();
     }
 }
