@@ -16,6 +16,8 @@ public class SoundRegistration {
     public static final Identifier CHAOS_ORB_DISAPPEAR = new Identifier("chaosmod", "chaos_orb_disappear");
     public static SoundEvent CHAOS_ORB_DISAPPEAR_EVENT = new SoundEvent(CHAOS_ORB_DISAPPEAR);
 
+
+    // Register all the sounds declared in this file
     public static void registerSounds() {
         Registry.register(Registry.SOUND_EVENT, CHAOS_ORB_DASH_FORWARD, CHAOS_ORB_DASH_FORWARD_EVENT);
         Registry.register(Registry.SOUND_EVENT, CHAOS_ORB_RELEASE_ENERGY, CHAOS_ORB_RELEASE_ENERGY_EVENT);

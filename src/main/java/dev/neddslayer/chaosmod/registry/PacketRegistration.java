@@ -14,6 +14,7 @@ public class PacketRegistration {
 
     public static final Identifier CHAOS_ORB_DASH_FORWARD = new Identifier("chaosmod", "dash_forward");
 
+    // Register the packet handlers for the server. This is only used for the chaos orb dashing forward, as hitting nothing is not sent to the server, so we must do it our own way.
     public static void registerHandlers() {
         ServerPlayNetworking.registerGlobalReceiver(CHAOS_ORB_DASH_FORWARD, ((server, player, handler, buf, responseSender) -> {
             if (player.totalExperience >= 50 || player.getAbilities().creativeMode) {

@@ -16,6 +16,7 @@ public class ItemRegistration {
         Registry.register(Registry.ITEM, new Identifier("chaosmod", name), item);
     }
 
+    // Register all the items. This is essentially the same as the sound registration, aside from using a seperate function to register the items, rather than a direct call to Registry.register
     public static void registerItems() {
         register("chaotic_remnant", CHAOTIC_REMNANT);
         register("chaos_orb", CHAOS_ORB);
