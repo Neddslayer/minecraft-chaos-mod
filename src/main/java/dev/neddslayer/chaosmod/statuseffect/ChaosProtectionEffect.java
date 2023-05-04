@@ -7,7 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 
 public class ChaosProtectionEffect extends StatusEffect {
     public ChaosProtectionEffect() {
-        super(StatusEffectCategory.BENEFICIAL, 0x3333CC);
+        super(StatusEffectCategory.BENEFICIAL, 0x650B0B);
     }
     // This method is called every tick to check whether it should apply the status effect or not
     @Override
