@@ -18,6 +18,8 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsage;
+import net.minecraft.item.Items;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -60,8 +62,11 @@ public class ChaosOrbItem extends Item {
                     ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 5));
                 }
             }
-            user.getStackInHand(hand).damage(10, user, (player) -> {
-                player.sendMessage(Text.of("it broke"));
+            ItemStack stack = user.getStackInHand(hand);
+            stack.damage(10, user, (player) -> {
+                ItemStack itemStack2 = ItemUsage.exchangeStack(stack, player, ItemRegistration.CHAOTIC_REMNANT.getDefaultStack());
+                world.playSound(player.getX(), player.getY(), player.getZ(), SoundRegistration.CHAOS_ORB_DISAPPEAR_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f, true);
+                player.setStackInHand(hand, itemStack2);
             } );
         }
         return super.use(world, user, hand);

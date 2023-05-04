@@ -13,11 +13,14 @@ public class SoundRegistration {
     public static SoundEvent CHAOS_ORB_RELEASE_ENERGY_EVENT = new SoundEvent(CHAOS_ORB_RELEASE_ENERGY);
     public static final Identifier CHAOS_ORB_PROTECT = new Identifier("chaosmod", "chaos_orb_protect");
     public static SoundEvent CHAOS_ORB_PROTECT_EVENT = new SoundEvent(CHAOS_ORB_PROTECT);
+    public static final Identifier CHAOS_ORB_DISAPPEAR = new Identifier("chaosmod", "chaos_orb_disappear");
+    public static SoundEvent CHAOS_ORB_DISAPPEAR_EVENT = new SoundEvent(CHAOS_ORB_DISAPPEAR);
 
     public static void registerSounds() {
         Registry.register(Registry.SOUND_EVENT, CHAOS_ORB_DASH_FORWARD, CHAOS_ORB_DASH_FORWARD_EVENT);
         Registry.register(Registry.SOUND_EVENT, CHAOS_ORB_RELEASE_ENERGY, CHAOS_ORB_RELEASE_ENERGY_EVENT);
         Registry.register(Registry.SOUND_EVENT, CHAOS_ORB_PROTECT, CHAOS_ORB_PROTECT_EVENT);
+        Registry.register(Registry.SOUND_EVENT, CHAOS_ORB_DISAPPEAR, CHAOS_ORB_DISAPPEAR_EVENT);
     }
 
 }
