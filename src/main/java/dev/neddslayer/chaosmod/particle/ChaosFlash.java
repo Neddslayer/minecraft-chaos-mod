@@ -31,7 +31,7 @@ public class ChaosFlash extends SpriteBillboardParticle {
     }
 
     public float getSize(float tickDelta) {
-        return size * MathHelper.sin(((float)this.age + tickDelta - 1.0F) * 0.25F * 3.1415927F);
+        return (float) (size * (Math.sin(this.age * 25) / 2));
     }
     @Environment(EnvType.CLIENT)
     public static class Factory implements ParticleFactory<DefaultParticleType> {
