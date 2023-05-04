@@ -11,9 +11,13 @@ import net.minecraft.util.math.MathHelper;
 
 @Environment(EnvType.CLIENT)
 public class ChaosFlash extends SpriteBillboardParticle {
-    ChaosFlash(ClientWorld clientWorld, double d, double e, double f) {
+
+    private final float size;
+
+    ChaosFlash(ClientWorld clientWorld, double d, double e, double f, float size) {
         super(clientWorld, d, e, f);
         this.maxAge = 4;
+        this.size = size;
     }
 
     public ParticleTextureSheet getType() {
@@ -21,12 +25,13 @@ public class ChaosFlash extends SpriteBillboardParticle {
     }
 
     public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta) {
-        this.setAlpha(0.6F - ((float)this.age + tickDelta - 1.0F) * 0.25F * 0.5F);
+        this.setAlpha(0.6F);
+        this.setColor(0, 0, 0);
         super.buildGeometry(vertexConsumer, camera, tickDelta);
     }
 
     public float getSize(float tickDelta) {
-        return 3;
+        return size * MathHelper.sin(((float)this.age + tickDelta - 1.0F) * 0.25F * 3.1415927F);
     }
     @Environment(EnvType.CLIENT)
     public static class Factory implements ParticleFactory<DefaultParticleType> {
@@ -37,7 +42,7 @@ public class ChaosFlash extends SpriteBillboardParticle {
         }
 
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            ChaosFlash chaosFlash = new ChaosFlash(clientWorld, d, e, f);
+            ChaosFlash chaosFlash = new ChaosFlash(clientWorld, d, e, f, (float) g);
             chaosFlash.setSprite(this.spriteProvider);
             return chaosFlash;
         }

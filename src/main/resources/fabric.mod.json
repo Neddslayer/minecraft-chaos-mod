@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "dev.neddslayer.chaosmod.ChaosMod"
+    ],
+    "client": [
+      "dev.neddslayer.chaosmod.ChaosModClient"
     ]
   },
   "mixins": [

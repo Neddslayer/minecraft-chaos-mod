@@ -86,7 +86,7 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
                 matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(ChaosMod.randomFloat(-180f, 180f)));
                 matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(ChaosMod.randomFloat(-180f, 180f)));
                 matrixStack.translate(ChaosMod.randomFloat(-0.1f, 0.1f), ChaosMod.randomFloat(-0.1f, 0.1f), ChaosMod.randomFloat(-0.1f, 0.1f));
-                itemEntity.world.addParticle(ChaosMod.CHAOS_FLASH, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 0, 0, 0);
+                itemEntity.world.addParticle(ChaosMod.CHAOS_FLASH, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 2.5, 0, 0);
                 this.itemRenderer.renderItem(itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, vertexConsumerProvider, 0, OverlayTexture.DEFAULT_UV, bakedModel);
             }
             matrixStack.pop();
