@@ -1,0 +1,15 @@
+{
+  "name": "chaosmod:chaos_orb_pedestal",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "chaosmod:chaos_orb_pedestal",
+        "projection": "rigid",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}
