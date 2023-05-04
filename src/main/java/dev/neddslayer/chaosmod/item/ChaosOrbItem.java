@@ -57,15 +57,19 @@ public class ChaosOrbItem extends Item {
                     // Apply a force to push the entity away from the player
                     entity.addVelocity(direction.x * 4.0, 0.75, direction.z * 4.0);
 
+                    // Apply damage and status effects
                     entity.damage(DamageSource.magic(entity, user), 3);
                     ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 5));
                     ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 5));
                 }
             }
             ItemStack stack = user.getStackInHand(hand);
-            stack.damage(10, user, (player) -> {
+            // Damage the item by 10
+            stack.damage(10, user, (player) -> { // When the item breaks...
+                // swap the stack out for the chaotic remnant
                 ItemStack itemStack2 = ItemUsage.exchangeStack(stack, player, ItemRegistration.CHAOTIC_REMNANT.getDefaultStack());
-                world.playSound(player.getX(), player.getY(), player.getZ(), SoundRegistration.CHAOS_ORB_DISAPPEAR_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f, true);
+                // play the disappear sound event
+                world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundRegistration.CHAOS_ORB_DISAPPEAR_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f);
                 player.setStackInHand(hand, itemStack2);
             } );
         }

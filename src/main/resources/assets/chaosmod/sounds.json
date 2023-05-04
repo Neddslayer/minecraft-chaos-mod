@@ -16,6 +16,12 @@
     "sounds": [
       "chaosmod:chaos_orb_protect"
     ]
+  },
+  "chaos_orb_disappear": {
+    "subtitle": "subtitles.chaosmod.chaos_orb_disappear",
+    "sounds": [
+      "chaosmod:chaos_orb_disappear"
+    ]
   }
 }
 
