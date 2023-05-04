@@ -11,6 +11,7 @@
     "BipedEntityModelMixin",
     "HeldItemFeatureRendererMixin",
     "HeldItemRendererMixin",
+    "ItemEntityRendererMixin",
     "MinecraftClientMixin"
   ],
   "injectors": {

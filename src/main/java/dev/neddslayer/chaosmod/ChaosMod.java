@@ -8,9 +8,11 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.*;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.HitResult;
@@ -29,6 +31,8 @@ public class ChaosMod implements ModInitializer {
 
     public static final StatusEffect CHAOS_PROTECTION = new ChaosProtectionEffect();
 
+    public static final DefaultParticleType CHAOS_FLASH = FabricParticleTypes.simple();
+
     @Override
     public void onInitialize() {
         CHAOS_LOGGER.info("The Chaos Orb has awoken...");
@@ -36,6 +40,7 @@ public class ChaosMod implements ModInitializer {
         ItemRegistration.registerItems();
         SoundRegistration.registerSounds();
         Registry.register(Registry.STATUS_EFFECT, new Identifier("chaosmod", "chaos_protection"), CHAOS_PROTECTION);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier("chaosmod", "chaos_flash"), CHAOS_FLASH);
         PacketRegistration.registerHandlers();
     }
 }

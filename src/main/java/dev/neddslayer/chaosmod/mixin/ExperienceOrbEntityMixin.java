@@ -40,9 +40,9 @@ public abstract class ExperienceOrbEntityMixin extends Entity {
                 }
             }
 
-            for (ItemStack orb :
-                    itemStacks) {
-                orb.setDamage(orb.getDamage() - 5);
+            for (ItemStack orb : itemStacks) {
+                int i = Math.min(this.getMendingRepairAmount(this.amount), orb.getDamage());
+                orb.setDamage(orb.getDamage() - i);
             }
         }
     }

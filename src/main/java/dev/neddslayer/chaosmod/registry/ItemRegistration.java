@@ -11,7 +11,7 @@ public class ItemRegistration {
 
     public static final Item CHAOS_REMNANT = new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON));
     public static final Item CHAOS_SHARD = new Item(new FabricItemSettings().recipeRemainder(CHAOS_REMNANT).rarity(Rarity.RARE));
-    public static final Item CHAOS_ORB = new ChaosOrbItem(new FabricItemSettings().rarity(Rarity.EPIC).maxDamage(10));
+    public static final Item CHAOS_ORB = new ChaosOrbItem(new FabricItemSettings().rarity(Rarity.EPIC).maxDamage(100));
 
     private static void register(String name, Item item) {
         Registry.register(Registry.ITEM, new Identifier("chaosmod", name), item);

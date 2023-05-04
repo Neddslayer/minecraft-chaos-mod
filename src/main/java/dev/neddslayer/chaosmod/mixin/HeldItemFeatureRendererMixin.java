@@ -49,9 +49,13 @@ public abstract class HeldItemFeatureRendererMixin<T extends LivingEntity, M ext
             matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
             boolean bl = arm == Arm.LEFT;
             matrices.translate((float)(bl ? -1 : 1) / 16.0F, 0.125, -0.625);
-            if (stack.getItem() == ItemRegistration.CHAOS_ORB) matrices.translate(0, (Math.sin(animTime * 25) / 4) + 0.1, -0.05);
-
-            this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light / (CHAOS_RANDOM.nextBetween(1,4)));
+            if (stack.getItem() == ItemRegistration.CHAOS_ORB) {
+                matrices.translate(0, (Math.sin(animTime * 25) / 4) + 0.1, -0.05);
+                this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light / (CHAOS_RANDOM.nextBetween(1,4)));
+            }
+            else {
+                this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light);
+            }
             if (stack.getItem() == ItemRegistration.CHAOS_ORB) {
                 matrices.translate(ChaosMod.randomFloat(-0.025f, 0.025f), ChaosMod.randomFloat(-0.1f, 0.1f), ChaosMod.randomFloat(-0.025f, 0.025f));
 
