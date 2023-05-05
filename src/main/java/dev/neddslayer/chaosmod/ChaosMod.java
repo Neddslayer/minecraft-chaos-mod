@@ -1,5 +1,6 @@
 package dev.neddslayer.chaosmod;
 
+import dev.neddslayer.chaosmod.registry.EffectRegistration;
 import dev.neddslayer.chaosmod.registry.ItemRegistration;
 import dev.neddslayer.chaosmod.registry.PacketRegistration;
 import dev.neddslayer.chaosmod.registry.SoundRegistration;
@@ -29,8 +30,6 @@ public class ChaosMod implements ModInitializer {
         return CHAOS_RANDOM.nextFloat() * (max - min) + min;
     }
 
-    public static final StatusEffect CHAOS_PROTECTION = new ChaosProtectionEffect();
-
     public static final DefaultParticleType CHAOS_FLASH = FabricParticleTypes.simple();
 
     @Override
@@ -39,7 +38,7 @@ public class ChaosMod implements ModInitializer {
 
         ItemRegistration.registerItems();
         SoundRegistration.registerSounds();
-        Registry.register(Registry.STATUS_EFFECT, new Identifier("chaosmod", "chaos_protection"), CHAOS_PROTECTION);
+        EffectRegistration.registerEffects();
         Registry.register(Registry.PARTICLE_TYPE, new Identifier("chaosmod", "chaos_flash"), CHAOS_FLASH);
         PacketRegistration.registerHandlers();
     }

@@ -19,7 +19,7 @@ public class PacketRegistration {
         ServerPlayNetworking.registerGlobalReceiver(CHAOS_ORB_DASH_FORWARD, ((server, player, handler, buf, responseSender) -> {
             if (player.totalExperience >= 50 || player.getAbilities().creativeMode) {
                 player.getWorld().playSound(null, player.getX(), player.getY(), player.getZ(), SoundRegistration.CHAOS_ORB_DASH_FORWARD_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f);
-                player.addStatusEffect(new StatusEffectInstance(ChaosMod.CHAOS_PROTECTION, 200));
+                player.addStatusEffect(new StatusEffectInstance(EffectRegistration.CHAOS_PROTECTION, 200));
                 Vec3d lookDir = player.getRotationVector();
                 player.addVelocity(lookDir.getX() * 2f, lookDir.getY() * 3f, lookDir.getZ() * 2f);
                 if (!player.getAbilities().creativeMode) player.addExperience(-50);
