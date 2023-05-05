@@ -72,7 +72,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
     public List<ItemStack> getAllItemsInPlayerInventory(PlayerEntity player) {
-        List<ItemStack> allItems = new ArrayList<ItemStack>();
+        List<ItemStack> allItems = new ArrayList();
         PlayerInventory playerInventory = player.getInventory();
         for (int i = 0; i < playerInventory.size(); i++) {
             ItemStack stack = playerInventory.getStack(i);

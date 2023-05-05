@@ -1,11 +1,14 @@
 package dev.neddslayer.chaosmod.registry;
 
 import dev.neddslayer.chaosmod.ChaosMod;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.sound.Sound;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
 import static dev.neddslayer.chaosmod.ChaosMod.CHAOS_LOGGER;
@@ -14,7 +17,7 @@ public class PacketRegistration {
 
     public static final Identifier CHAOS_ORB_DASH_FORWARD = new Identifier("chaosmod", "dash_forward");
 
-    // Register the packet handlers for the server. This is only used for the chaos orb dashing forward, as hitting nothing is not sent to the server, so we must do it our own way.
+    // Register the packet handlers for the server. This is used for the chaos orb dashing forward as hitting nothing is not sent to the server, so we must do it our own way.
     public static void registerHandlers() {
         ServerPlayNetworking.registerGlobalReceiver(CHAOS_ORB_DASH_FORWARD, ((server, player, handler, buf, responseSender) -> {
             if (player.totalExperience >= 50 || player.getAbilities().creativeMode) {
@@ -26,6 +29,13 @@ public class PacketRegistration {
                 player.velocityModified = true;
             }
         }));
+        ServerTickEvents.END_SERVER_TICK.register((world) -> {
+            for (ServerPlayerEntity player : world.getPlayerManager().getPlayerList()) {
+                if (player.hasStatusEffect(EffectRegistration.CHAOTIC_INSTABILITY) && player.age % 100 == 0) {
+                    player.damage(CustomDamageSources.CHAOTIC_INSTABILITY, 4);
+                }
+            }
+        });
     }
 
 }
