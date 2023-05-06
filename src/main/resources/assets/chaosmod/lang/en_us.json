@@ -1,5 +1,7 @@
 {
   "item.chaosmod.chaos_orb": "The Chaos Orb",
   "item.chaosmod.chaotic_remnant": "Chaotic Remnant",
-  "effect.chaosmod.chaos_protection": "Chaos Protection"
+  "effect.chaosmod.chaos_protection": "Chaos Protection",
+  "effect.chaosmod.chaotic_instability": "Chaotic Instability",
+  "death.attack.chaotic_instability" : "%1$s became too unstable"
 }

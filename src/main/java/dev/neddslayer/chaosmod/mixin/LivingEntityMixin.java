@@ -61,8 +61,8 @@ public abstract class LivingEntityMixin extends Entity {
             List<ItemStack> itemStackList = getAllItemsInPlayerInventory((PlayerEntity)(Object)this);
             for (ItemStack stack : itemStackList) {
                 if (stack.getItem() == ItemRegistration.CHAOTIC_REMNANT) {
-                    this.addStatusEffect(new StatusEffectInstance(EffectRegistration.CHAOTIC_INSTABILITY, 1, 1));
-                    this.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 1, 1));
+                    this.addStatusEffect(new StatusEffectInstance(EffectRegistration.CHAOTIC_INSTABILITY, 1, 0));
+                    this.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 1, 2));
                     this.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1, 1));
                 }
             }
