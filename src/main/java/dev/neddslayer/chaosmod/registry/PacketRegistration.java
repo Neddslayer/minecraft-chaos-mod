@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 
@@ -18,6 +19,8 @@ public class PacketRegistration {
             if (player.totalExperience >= 50 || player.getAbilities().creativeMode) {
                 player.getWorld().playSound(null, player.getX(), player.getY(), player.getZ(), SoundRegistration.CHAOS_ORB_DASH_FORWARD_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f);
                 player.addStatusEffect(new StatusEffectInstance(EffectRegistration.CHAOS_PROTECTION, 200));
+                if (player.getStackInHand(Hand.MAIN_HAND).getItem() == ItemRegistration.CHAOS_ORB) player.getStackInHand(Hand.MAIN_HAND).damage(2, player, playerEntity -> {});
+                if (player.getStackInHand(Hand.OFF_HAND).getItem() == ItemRegistration.CHAOS_ORB) player.getStackInHand(Hand.OFF_HAND).damage(2, player, playerEntity -> {});
                 Vec3d lookDir = player.getRotationVector();
                 player.addVelocity(lookDir.getX() * 2f, lookDir.getY() * 3f, lookDir.getZ() * 2f);
                 if (!player.getAbilities().creativeMode) player.addExperience(-50);
