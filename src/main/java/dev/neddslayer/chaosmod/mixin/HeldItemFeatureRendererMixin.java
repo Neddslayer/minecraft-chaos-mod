@@ -1,10 +1,7 @@
 package dev.neddslayer.chaosmod.mixin;
 
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
 import dev.neddslayer.chaosmod.ChaosMod;
 import dev.neddslayer.chaosmod.registry.ItemRegistration;
-import net.fabricmc.loader.impl.lib.sat4j.core.Vec;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
@@ -15,11 +12,9 @@ import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Arm;
 import net.minecraft.util.math.Vec3f;
-import net.minecraft.util.math.random.Random;
 import org.spongepowered.asm.mixin.*;
 
 import static dev.neddslayer.chaosmod.ChaosMod.CHAOS_RANDOM;

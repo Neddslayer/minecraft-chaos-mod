@@ -1,9 +1,7 @@
 package dev.neddslayer.chaosmod.mixin;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import dev.neddslayer.chaosmod.registry.ItemRegistration;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -14,9 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 @Mixin(ExperienceOrbEntity.class)
 public abstract class ExperienceOrbEntityMixin extends Entity {

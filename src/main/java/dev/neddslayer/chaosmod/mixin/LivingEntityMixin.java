@@ -1,6 +1,5 @@
 package dev.neddslayer.chaosmod.mixin;
 
-import dev.neddslayer.chaosmod.ChaosMod;
 import dev.neddslayer.chaosmod.registry.EffectRegistration;
 import dev.neddslayer.chaosmod.registry.ItemRegistration;
 import dev.neddslayer.chaosmod.registry.SoundRegistration;
@@ -13,8 +12,6 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.sound.SoundCategory;
@@ -72,7 +69,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
     public List<ItemStack> getAllItemsInPlayerInventory(PlayerEntity player) {
-        List<ItemStack> allItems = new ArrayList();
+        List<ItemStack> allItems = new ArrayList<>();
         PlayerInventory playerInventory = player.getInventory();
         for (int i = 0; i < playerInventory.size(); i++) {
             ItemStack stack = playerInventory.getStack(i);

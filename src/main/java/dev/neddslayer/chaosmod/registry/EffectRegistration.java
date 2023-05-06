@@ -2,7 +2,6 @@ package dev.neddslayer.chaosmod.registry;
 
 import dev.neddslayer.chaosmod.statuseffect.ChaosProtectionEffect;
 import dev.neddslayer.chaosmod.statuseffect.ChaoticInstabilityEffect;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;

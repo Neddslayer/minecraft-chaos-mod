@@ -1,6 +1,5 @@
 package dev.neddslayer.chaosmod.registry;
 
-import net.minecraft.client.sound.Sound;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;

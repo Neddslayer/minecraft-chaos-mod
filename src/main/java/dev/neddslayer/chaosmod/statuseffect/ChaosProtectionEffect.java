@@ -1,9 +1,7 @@
 package dev.neddslayer.chaosmod.statuseffect;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.entity.player.PlayerEntity;
 
 public class ChaosProtectionEffect extends StatusEffect {
     public ChaosProtectionEffect() {

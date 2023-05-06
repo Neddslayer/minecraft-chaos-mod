@@ -1,17 +1,12 @@
 package dev.neddslayer.chaosmod.registry;
 
-import dev.neddslayer.chaosmod.ChaosMod;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.client.sound.Sound;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-
-import static dev.neddslayer.chaosmod.ChaosMod.CHAOS_LOGGER;
 
 public class PacketRegistration {
 

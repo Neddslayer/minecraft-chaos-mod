@@ -1,7 +1,6 @@
 package dev.neddslayer.chaosmod.mixin;
 
 import com.google.common.base.MoreObjects;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.neddslayer.chaosmod.ChaosMod;
 import dev.neddslayer.chaosmod.registry.ItemRegistration;
@@ -13,7 +12,6 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

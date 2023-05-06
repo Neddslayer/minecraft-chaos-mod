@@ -11,8 +11,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static dev.neddslayer.chaosmod.ChaosMod.CHAOS_LOGGER;
-
 @Mixin(MinecraftClient.class)
 public abstract class MinecraftClientMixin {
 
