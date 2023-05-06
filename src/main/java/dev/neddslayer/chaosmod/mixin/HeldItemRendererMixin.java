@@ -46,7 +46,7 @@ public abstract class HeldItemRendererMixin {
         if (mainHand.getItem() == ItemRegistration.CHAOS_ORB) {
             for (int zxc = 0; zxc < 2; zxc++) {
                 float f = player.getHandSwingProgress(tickDelta);
-                Hand hand = (Hand) MoreObjects.firstNonNull(player.preferredHand, Hand.MAIN_HAND);
+                Hand hand = MoreObjects.firstNonNull(player.preferredHand, Hand.MAIN_HAND);
                 float g = MathHelper.lerp(tickDelta, player.prevPitch, player.getPitch());
                 HeldItemRenderer.HandRenderType handRenderType = getHandRenderType(player);
                 float h = MathHelper.lerp(tickDelta, player.lastRenderPitch, player.renderPitch);

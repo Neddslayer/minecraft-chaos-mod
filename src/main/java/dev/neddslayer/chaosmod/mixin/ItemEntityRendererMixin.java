@@ -12,7 +12,6 @@ import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
@@ -45,8 +44,8 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
         if (itemStack.getItem() == ItemRegistration.CHAOS_ORB) {
             matrixStack.push();
             int j = itemStack.isEmpty() ? 187 : Item.getRawId(itemStack.getItem()) + itemStack.getDamage();
-            this.random.setSeed((long) j);
-            BakedModel bakedModel = this.itemRenderer.getModel(itemStack, itemEntity.world, (LivingEntity) null, itemEntity.getId());
+            this.random.setSeed(j);
+            BakedModel bakedModel = this.itemRenderer.getModel(itemStack, itemEntity.world, null, itemEntity.getId());
             boolean bl = bakedModel.hasDepth();
             int k = this.getRenderedAmount(itemStack);
             float n = itemEntity.getRotation(g);
@@ -58,7 +57,7 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
             if (!bl) {
                 float r = -0.0F * (float) (k - 1) * 0.5F * o;
                 t = -0.09375F * (float) (k - 1) * 0.5F * q;
-                matrixStack.translate((double) r, 0.5, (double) t);
+                matrixStack.translate(r, 0.5, t);
             }
             matrixStack.translate(0, 0.5, 0);
             for (int u = 0; u < 2; ++u) {
@@ -66,10 +65,10 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
                     if (bl) {
                         s = (this.random.nextFloat() * 2.0F - 1.0F) * 0.15F;
                         float v = (this.random.nextFloat() * 2.0F - 1.0F) * 0.15F;
-                        matrixStack.translate((double) s, 0, (double) v);
+                        matrixStack.translate(s, 0, v);
                     } else {
                         s = (this.random.nextFloat() * 2.0F - 1.0F) * 0.15F * 0.5F;
-                        matrixStack.translate((double) s, 0, 0.0);
+                        matrixStack.translate(s, 0, 0.0);
                     }
                 }
 
@@ -84,15 +83,14 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
         }
         matrixStack.push();
         int j = itemStack.isEmpty() ? 187 : Item.getRawId(itemStack.getItem()) + itemStack.getDamage();
-        this.random.setSeed((long)j);
-        BakedModel bakedModel = this.itemRenderer.getModel(itemStack, itemEntity.world, (LivingEntity)null, itemEntity.getId());
+        this.random.setSeed(j);
+        BakedModel bakedModel = this.itemRenderer.getModel(itemStack, itemEntity.world, null, itemEntity.getId());
         boolean bl = bakedModel.hasDepth();
         int k = this.getRenderedAmount(itemStack);
-        float h = 0.25F;
         float l = MathHelper.sin(((float)itemEntity.getItemAge() + g) / 10.0F + itemEntity.uniqueOffset) * 0.1F + 0.1F;
         float m = bakedModel.getTransformation().getTransformation(ModelTransformation.Mode.GROUND).scale.getY();
         if (itemStack.getItem() != ItemRegistration.CHAOS_ORB) {
-            matrixStack.translate(0.0, (double) (l + 0.25F * m), 0.0);
+            matrixStack.translate(0.0, l + 0.25F * m, 0.0);
         } else {
             matrixStack.translate(0.0, 0.5, 0.0);
         }
@@ -107,7 +105,7 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
             float r = -0.0F * (float)(k - 1) * 0.5F * o;
             s = -0.0F * (float)(k - 1) * 0.5F * p;
             t = -0.09375F * (float)(k - 1) * 0.5F * q;
-            matrixStack.translate((double)r, (double)s, (double)t);
+            matrixStack.translate(r, s, t);
         }
 
         for(int u = 0; u < k; ++u) {
@@ -117,18 +115,18 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
                     s = (this.random.nextFloat() * 2.0F - 1.0F) * 0.15F;
                     t = (this.random.nextFloat() * 2.0F - 1.0F) * 0.15F;
                     float v = (this.random.nextFloat() * 2.0F - 1.0F) * 0.15F;
-                    matrixStack.translate((double)s, (double)t, (double)v);
+                    matrixStack.translate(s, t, v);
                 } else {
                     s = (this.random.nextFloat() * 2.0F - 1.0F) * 0.15F * 0.5F;
                     t = (this.random.nextFloat() * 2.0F - 1.0F) * 0.15F * 0.5F;
-                    matrixStack.translate((double)s, (double)t, 0.0);
+                    matrixStack.translate(s, t, 0.0);
                 }
             }
 
             this.itemRenderer.renderItem(itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, vertexConsumerProvider, i, OverlayTexture.DEFAULT_UV, bakedModel);
             matrixStack.pop();
             if (!bl) {
-                matrixStack.translate((double)(0.0F * o), (double)(0.0F * p), (double)(0.09375F * q));
+                matrixStack.translate(0.0F * o, 0.0F * p, 0.09375F * q);
             }
         }
 
